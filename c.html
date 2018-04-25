@@ -1,0 +1,21 @@
+<h1>Lista kobiet majacych mniej niz 25 lat, ktore urodzily dzieci o wadze mniejszej niz 4000 g</h1>
+<ol>
+<?php
+
+    $sql = "SELECT Mothers.Name FROM Mothers INNER JOIN Babies ON Mothers.MotherID = Babies.MotherID WHERE Mothers.Age < 25 AND Babies.Weight < 4000";
+    $result = mysqli_query($connection, $sql);
+
+    if (mysqli_query($connection, $sql) == TRUE)
+    {
+        while($row = mysqli_fetch_assoc($result)) {
+            echo "<li>".$row["Name"]."</li>";
+        }
+    }
+    else
+    {
+        echo "ERR: ".$sql;
+    }
+
+    mysqli_close($sql);
+?>
+</ol>

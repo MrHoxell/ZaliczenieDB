@@ -1,0 +1,20 @@
+<h1>Najczesciej pojawiajaca sie data urodzenia i w tym liczba urodzen</h1>
+
+<?php
+
+    $sql = "SELECT Birthday_date, COUNT(Birthday_date) AS Amount FROM Babies GROUP BY Birthday_date ORDER BY amount DESC LIMIT 1";
+    $result = mysqli_query($connection, $sql);
+
+    if (mysqli_query($connection, $sql) == TRUE)
+    {
+        while($row = mysqli_fetch_assoc($result)) {
+            echo "W dniu <b>".$row["Birthday_date"]."</b> urodzilo sie najwiecej (<b>".$row["Amount"]."</b>) dzieci";
+        }
+    }
+    else
+    {
+        echo "ERR: ".$sql;
+    }
+
+    mysqli_close($sql);
+?>

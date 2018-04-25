@@ -1,0 +1,21 @@
+<h1>Daty urodzen blizniat</h1>
+<ol>
+<?php
+
+    $sql = "SELECT Babies.Birthday_date FROM Babies INNER JOIN Mothers ON Babies.MotherID = Mothers.MotherID GROUP BY Babies.MotherID HAVING COUNT(Babies.MotherID) > 1 AND COUNT(Babies.Birthday_date) > 1 ORDER BY Babies.Birthday_date DESC";
+    $result = mysqli_query($connection, $sql);
+
+    if (mysqli_query($connection, $sql) == TRUE)
+    {
+        while($row = mysqli_fetch_assoc($result)) {
+            echo "<li>".$row["Birthday_date"]."</li>";
+        }
+    }
+    else
+    {
+        echo "ERR: ".$sql;
+    }
+
+    mysqli_close($sql);
+?>
+</ol>

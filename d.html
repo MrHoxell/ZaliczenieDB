@@ -1,0 +1,22 @@
+<h1>Dziewczynki, ktore maja takie same imiona jak ich matki</h1>
+<table border=1>
+<tr><th>Name</th><th>Birthday date</th></tr>
+<?php
+
+    $sql = "SELECT Babies.Name, Babies.Birthday_date FROM Babies INNER JOIN Mothers ON Babies.MotherID = Mothers.MotherID WHERE Babies.Sex='c' AND Babies.Name = Mothers.Name;";
+    $result = mysqli_query($connection, $sql);
+
+    if (mysqli_query($connection, $sql) == TRUE)
+    {
+        while($row = mysqli_fetch_assoc($result)) {
+            echo "<tr><td>".$row["Name"]."</td><td>".$row["Birthday_date"]."</td></tr>";
+        }
+    }
+    else
+    {
+        echo "ERR: ".$sql;
+    }
+
+    mysqli_close($sql);
+?>
+</table>

@@ -1,0 +1,34 @@
+<h1>Najwyzszy chlopak i dziewczyna</h1>
+
+<?php
+
+    $sql = "SELECT BabyID, Sex, Name, MAX(Height) AS Height FROM Babies WHERE Sex='c';";
+    $result = mysqli_query($connection, $sql);
+
+    if (mysqli_query($connection, $sql) == TRUE)
+    {
+        while($row = mysqli_fetch_assoc($result)) {
+            echo "Najwyzsza dzwiewczyna ma na imie <b>".$row["Name"]."</b> i ma <b>".$row["Height"]."</b> wzrostu.<br>";
+        }
+    }
+    else
+    {
+        echo "ERR: ".$sql;
+    }
+
+    $sql = "SELECT BabyID, Sex, Name, MAX(Height) AS Height FROM Babies WHERE Sex='s';";
+    $result = mysqli_query($connection, $sql);
+
+    if (mysqli_query($connection, $sql) == TRUE)
+    {
+        while($row = mysqli_fetch_assoc($result)) {
+            echo "Najwyzszy chlopiec ma na imie <b>".$row["Name"]."</b> i ma <b>".$row["Height"]."</b> wzrostu.";
+        }
+    }
+    else
+    {
+        echo "ERR: ".$sql;
+    }
+
+    mysqli_close($sql);
+?>
