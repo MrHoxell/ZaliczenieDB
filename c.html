@@ -2,7 +2,7 @@
 <ol>
 <?php
 
-    $sql = "SELECT Mothers.Name FROM Mothers INNER JOIN Babies ON Mothers.MotherID = Babies.MotherID WHERE Mothers.Age < 25 AND Babies.Weight < 4000";
+    $sql = "SELECT Mothers.Name FROM Mothers INNER JOIN Babies ON Mothers.MotherID = Babies.MotherID WHERE Mothers.Age < 25 AND Babies.Weight > 4000";
     $result = mysqli_query($connection, $sql);
 
     if (mysqli_query($connection, $sql) == TRUE)
