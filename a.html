@@ -2,7 +2,7 @@
 
 <?php
 
-    $sql = "SELECT BabyID, Sex, Name, MAX(Height) AS Height FROM Babies WHERE Sex='c';";
+    $sql = "SELECT BabyID, Sex, Name, Height FROM Babies WHERE Sex='c' ORDER BY Height DESC LIMIT 1;";
     $result = mysqli_query($connection, $sql);
 
     if (mysqli_query($connection, $sql) == TRUE)
@@ -16,7 +16,7 @@
         echo "ERR: ".$sql;
     }
 
-    $sql = "SELECT BabyID, Sex, Name, MAX(Height) AS Height FROM Babies WHERE Sex='s';";
+    $sql = "SELECT BabyID, Sex, Name, Height FROM Babies WHERE Sex='s' ORDER BY Height DESC LIMIT 1;";
     $result = mysqli_query($connection, $sql);
 
     if (mysqli_query($connection, $sql) == TRUE)
